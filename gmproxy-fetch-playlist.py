@@ -160,7 +160,7 @@ def fetch_playlist(url, to_filename, args):
         if not confirm_yes_default("Executing: mpc load '%s'" % to_filename):
             info('Aborted')
             return
-        pl_name = os.path.basename(to_filename)
+        pl_name = os.path.basename(to_filename).split('.')[0]  # strip out the .m3u
         info('loading playlist: ' + pl_name)
         subprocess.check_call(['mpc', 'load', pl_name])
 
